@@ -7,7 +7,7 @@ Featuring:
 
 1. MVC Routes
 2. Web 2 Api CRUD
-3. Identity Authentication for POST/PUT
+3. Identity Authentication for POST/PUT/DELETE
 4. Entity Framework Core to SQL Server
 5. Angular Views embedded in Razor Partials.
 

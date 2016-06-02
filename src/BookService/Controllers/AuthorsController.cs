@@ -4,6 +4,7 @@ using BookService.Data;
 using Microsoft.EntityFrameworkCore;
 using BookService.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookService.Controllers
 {
@@ -39,6 +40,7 @@ namespace BookService.Controllers
         }
 
         // POST: api/Authors
+        [Authorize]
         [HttpPost]
         public async Task<ObjectResult> Create([FromBody] Author author)
         {
@@ -54,6 +56,7 @@ namespace BookService.Controllers
         }
 
         // PUT: api/Authors/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ObjectResult> Update(int id, [FromBody] Author author)
         {
@@ -91,6 +94,7 @@ namespace BookService.Controllers
         }
 
         // DELETE: api/Authors/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
