@@ -38,8 +38,7 @@
       "version": "1.0.0-preview1-final",
       "type": "build"
     },
-    "AngularJS.Core": "1.5.5",
-    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final"
+    "AngularJS.Core": "1.5.5"
   },
 
   "tools": {

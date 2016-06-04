@@ -12,7 +12,7 @@ angular.module('bookApp.controllers',[]).controller('BookListController',functio
 
 }).controller('BookViewController',function($scope,$stateParams,Api){
 
-    $scope.book=Api.Book.get({id:$stateParams.id});
+    $scope.book=Api.BookDetails.get({ id: $stateParams.id });
 
 }).controller('BookCreateController', function ($scope, $state, $stateParams, Api) {
 
@@ -32,8 +32,8 @@ angular.module('bookApp.controllers',[]).controller('BookListController',functio
         $scope.book = Api.Book.get({ id: $stateParams.id }, function () {
             $scope.authors = Api.Author.query(function (authors) {
                 $.each(authors, function (index, author) {
-                    if ($scope.book.AuthorName == author.Name) {
-                        $scope.book.AuthorId = author.Id;
+                    if ($scope.book.AuthorId == author.Id) {
+                        $scope.AuthorName = author.Name;
                     }
                 });
             });

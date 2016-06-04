@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using BookService.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace BookService.Controllers
 {
@@ -20,10 +21,10 @@ namespace BookService.Controllers
 
         // GET: api/Books
         [HttpGet]
-        public IQueryable<BookDTO> GetAll()
+        public IQueryable<BookListDTO> GetAll()
         {
             var books = from b in _dbContext.Books
-                        select new BookDTO()
+                        select new BookListDTO()
                         {
                             Id = b.Id,
                             Title = b.Title,
@@ -33,20 +34,59 @@ namespace BookService.Controllers
             return books;
         }
 
+        // GET: api/Books/author/5
+        [HttpGet("author/{authorId}")]
+        public IQueryable GetByAuthorId(int authorId)
+        {
+            var books = from b in _dbContext.Books.Where(b => b.AuthorId == authorId)
+                        select new BookListDTO()
+                       {
+                           Id = b.Id,
+                           Title = b.Title,
+                           AuthorName = b.Author.Name
+                       };
+
+            return books;
+        }
+
         // GET: api/Books/5
         [HttpGet("{id}", Name = "GetBook")]
         public async Task<ObjectResult> GetById(int id)
         {
+            var book = await _dbContext.Books.Select(b =>
+                    new BookDTO()
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Year = b.Year,
+                        Price = b.Price,
+                        Genre = b.Genre,
+                        AuthorId = b.AuthorId
+                    }).SingleOrDefaultAsync(b => b.Id == id);
+
+            if (book == null)
+            {
+                return NotFound(id);
+            }
+
+            return Ok(book);
+        }
+
+        // GET: api/Books/5/details
+        [HttpGet("{id}/details")]
+        public async Task<ObjectResult> GetDetailsById(int id)
+        {
             var book = await _dbContext.Books.Include(b => b.Author).Select(b =>
-                new BookDetailDTO()
-                {
-                    Id = b.Id,
-                    Title = b.Title,
-                    Year = b.Year,
-                    Price = b.Price,
-                    AuthorName = b.Author.Name,
-                    Genre = b.Genre
-                }).SingleOrDefaultAsync(b => b.Id == id);
+                    new BookDetailDTO()
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Year = b.Year,
+                        Price = b.Price,
+                        Genre = b.Genre,
+                        AuthorName = b.Author.Name
+                    }).SingleOrDefaultAsync(b => b.Id == id);
+
             if (book == null)
             {
                 return NotFound(id);
@@ -113,7 +153,7 @@ namespace BookService.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            Book book = await _dbContext.Books.SingleOrDefaultAsync(e => e.Id == id);
+            Book book = await _dbContext.Books.SingleOrDefaultAsync(b => b.Id == id);
             if (book == null)
             {
                 return NotFound();
@@ -136,7 +176,7 @@ namespace BookService.Controllers
 
         private bool BookExists(int id)
         {
-            return _dbContext.Books.Count(e => e.Id == id) > 0;
+            return _dbContext.Books.Count(b => b.Id == id) > 0;
         }
     }
 }

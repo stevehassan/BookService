@@ -3,7 +3,9 @@ angular.module('bookApp.services', ['ngResource']).factory('Api', function ($res
         Book: $resource('/api/books/:id', { id: '@Id' }, {
             update: {
                 method: 'PUT'
-            }
+            },
+        }),
+        BookDetails: $resource('/api/books/:id/details', { id: '@Id' }, {
         }),
         Author: $resource('/api/authors/:id', { id: '@Id' }, {
             update: {

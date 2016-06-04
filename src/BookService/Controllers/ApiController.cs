@@ -9,6 +9,8 @@ namespace BookService.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewData["Title"] = "CRUD API";
+
             return View();
         }
 

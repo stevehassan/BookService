@@ -1,34 +1,24 @@
-﻿@{
-    ViewData["Title"] = "CRUD API";
-}
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+﻿<h2>@ViewData["Title"].</h2>
 
 <hr />
 
 <div class="container" data-ng-app="bookApp" data-ng-controller="BookListController">
     <div class="row top-buffer">
-        <div class="col-xs-3 well">
+        <div class="col-xs-4 well">
             <ul class="nav nav-list">
                 <li class="nav-header">Available Operations</li>
-                <li><a href="/api/books" target="_blank">GET api/Books</a></li>
-                <li class="divider"></li>
-                <li><a href="/api/books/1" target="_blank">POST api/Books</a></li>
-                <li class="divider"></li>
+                <li><a href="/api/books/1/details" target="_blank">GET api/Books/{Id}/details</a></li>
+                <li><a href="/api/books/author/1" target="_blank">GET api/Books/author/{1}</a></li>
+                <li><a href="/api/books" target="_blank">POST api/Books</a></li>
                 <li><a href="/api/books/1" target="_blank">PUT api/Books/{Id}</a></li>
-                <li class="divider"></li>
                 <li><a href="/api/books/1" target="_blank">DELETE api/Books/{Id}</a></li>
-                <li class="divider"></li>
-                <li><a href="/api/authors" target="_blank">GET api/Authors</a></li>
-                <li class="divider"></li>
-                <li><a href="/api/authors/1" target="_blank">POST api/Authors</a></li>
-                <li class="divider"></li>
+                <li><a href="/api/authors/1" target="_blank">GET api/Authors/{Id}</a></li>
+                <li><a href="/api/authors" target="_blank">POST api/Authors</a></li>
                 <li><a href="/api/authors/1" target="_blank">PUT api/Authors/{Id}</a></li>
-                <li class="divider"></li>
                 <li><a href="/api/authors/1" target="_blank">DELETE api/Authors/{Id}</a></li>
             </ul>
         </div>
-        <div class="col-xs-9">
+        <div class="col-xs-8">
             <div data-ui-view></div>
         </div>
     </div>

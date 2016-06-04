@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BookService", "src\BookService\BookService.xproj", "{694A12CF-5CB6-43A5-9395-FD964ED0CEFB}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BookServiceTests", "src\BookServiceTests\src\BookServiceTests\BookServiceTests.xproj", "{BD780349-E5D5-48D0-9F3B-7C7FBCE2E223}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{694A12CF-5CB6-43A5-9395-FD964ED0CEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{694A12CF-5CB6-43A5-9395-FD964ED0CEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{694A12CF-5CB6-43A5-9395-FD964ED0CEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD780349-E5D5-48D0-9F3B-7C7FBCE2E223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD780349-E5D5-48D0-9F3B-7C7FBCE2E223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD780349-E5D5-48D0-9F3B-7C7FBCE2E223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD780349-E5D5-48D0-9F3B-7C7FBCE2E223}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{694A12CF-5CB6-43A5-9395-FD964ED0CEFB} = {48545CB5-9A3D-4432-BD90-806CCD333BFE}
+		{BD780349-E5D5-48D0-9F3B-7C7FBCE2E223} = {48545CB5-9A3D-4432-BD90-806CCD333BFE}
 	EndGlobalSection
 EndGlobal
