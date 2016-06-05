@@ -11,8 +11,6 @@ namespace BookService.Tests
 {
     public class Setup
     {
-        public IHostingEnvironment HostingEnvironment { get; set; }
-
         public IServiceProvider Services { get; set; }
 
         public IConfigurationRoot Configuration { get; }
