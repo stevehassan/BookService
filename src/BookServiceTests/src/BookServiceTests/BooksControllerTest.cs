@@ -3,6 +3,7 @@ using BookService.Data;
 using BookService.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -10,11 +11,11 @@ namespace BookService.Tests
 {
     public class BooksControllerTest
     {
+        IServiceProvider services = new Setup().Services;
+
         [Fact]
         public void GetAll()
         {
-            var services = new Setup().Services;
-
             using (var context = new ApplicationDbContext(
                 services.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
